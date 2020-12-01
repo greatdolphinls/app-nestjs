@@ -1,0 +1,22 @@
+version: '3'
+
+services: 
+  app-main-dev:
+    env_file: ./.env
+    image: app-main:dev
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-dev
+    environment:
+      NODE_ENV: dev
+    ports: 
+      - ${PORT}:${PORT}
+  app-main-prod:
+    image: ${REGISTRY_IMAGE}
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-prod
+    environment:
+      NODE_ENV: prod
+    ports: 
+      - 5000:${PORT}

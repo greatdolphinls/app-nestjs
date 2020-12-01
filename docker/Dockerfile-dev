@@ -1,0 +1,21 @@
+FROM node:10.15.3-alpine
+
+ENV APP_DIR_NAME app
+
+RUN apk add --no-cache --virtual build-dependencies python make g++
+
+RUN mkdir -p /home/node/${APP_DIR_NAME} && chown -R node:node /home/node/${APP_DIR_NAME}
+
+WORKDIR /home/node/${APP_DIR_NAME}
+
+COPY package*.json ./
+
+RUN npm install && apk del build-dependencies
+
+USER node
+
+COPY --chown=node:node . .
+
+EXPOSE ${PORT}
+
+CMD npm run start:${NODE_ENV}

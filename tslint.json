@@ -1,0 +1,26 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended"/*, "tslint-no-circular-imports"*/], // TODO: activate tslint-no-circular-imports when reward go to his own module.
+  "jsRules": {
+    "no-unused-expression": false
+  },
+  "rules": {
+    "quotemark": [true, "single"],
+    "member-access": [false],
+    "ordered-imports": [false],
+    "max-line-length": [true, 150],
+    "member-ordering": [false],
+    "interface-name": [false],
+    "arrow-parens": false,
+    "object-literal-sort-keys": false,
+    "eofline": true,
+    "comma-dangle": ["error", "always"],
+    "no-invalid-template-strings": true,
+    "variable-name": [
+      true,
+      "allow-leading-underscore"
+    ],
+    "no-console": [true, "log", "error", "warning", "debug"]
+  },
+  "rulesDirectory": []
+}
